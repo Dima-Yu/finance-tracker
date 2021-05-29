@@ -1,0 +1,13 @@
+.results-block
+  =render 'layouts/messages'
+
+- if @stock
+  .card.card-header.results-block
+    strong Symbol: 
+    = @stock.ticker
+    strong Company name: 
+    = @stock.name
+    strong Last price: 
+    = @stock.last_price
+/ - else
+  
