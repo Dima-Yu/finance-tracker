@@ -7,6 +7,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
           = link_to "My portfolio", my_portfolio_path, class: "nav-link #{'active' if request.path == my_portfolio_path}"
+        
+      ul.navbar-nav.ml-auto 
         - if !current_user
           li.nav-item
             = link_to "Sign Up", new_user_registration_path, class: "nav-link"
@@ -14,7 +16,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             = link_to "Sign In", user_session_path, class: "nav-link"
         - else
           li.nav-item
+            = link_to current_user.full_name, edit_user_registration_path, class: "nav-link"
+          li.nav-item
             = link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link"
+          
       form.d-flex
         input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
         button.btn.btn-outline-success type="submit"  Search
