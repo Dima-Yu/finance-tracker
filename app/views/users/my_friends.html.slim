@@ -1,0 +1,14 @@
+h1 My friends
+.search-area
+  h3 Search friends
+
+  = form_tag search_friend_path, remote: true, method: :get do 
+    .form-group.row.g-0
+      .col-sm-9
+        = text_field_tag :friend, params[:friend], placeholder: "Name or email", autofocus: true, class: "form-control form-control-lg"
+      .col-sm-3
+        = button_tag type: :submit, class: "btn btn-success btn-lg" do 
+          = fa_icon "search"
+#results
+- if !@friends.empty?
+  = render 'friends/list' 

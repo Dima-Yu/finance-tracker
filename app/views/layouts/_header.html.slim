@@ -7,6 +7,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
           = link_to "My portfolio", my_portfolio_path, class: "nav-link #{'active' if request.path == my_portfolio_path}"
+        li.nav-item
+          = link_to "My friends", my_friends_path, class: "nav-link #{'active' if request.path == my_friends_path}"
         
       ul.navbar-nav.ml-auto 
         - if !current_user
