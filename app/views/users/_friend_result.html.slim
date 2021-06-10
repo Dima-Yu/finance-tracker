@@ -14,17 +14,8 @@
             = friend.email
           td
             strong Actions:
-            = link_to "View profile", '#', class: 'btn btn-sm btn-success'
+            = link_to "View profile", user_path(friend), class: 'btn btn-sm btn-success'
             - if current_user.not_friends_with?(friend.id)
               = link_to "Follow friend?", friendships_path(friend: friend), class: 'btn btn-sm btn-success', method: :post
             - else 
               span.badge.bg-secondary You are friends
-    / - if current_user.can_track_friend?(@friend.id)
-    /   = link_to 'Add to friendlist', user_friends_path(user: current_user, id: @friend.id), method: :post, class: "btn btn-success"
-    / - else
-    /   span.badge.bg-secondary 
-    /     | You are already following
-    /     - if !current_user.under_stock_limit?
-    /       | 10 users 
-    /     - if current_user.friend_already_tracked?(@stock.ticker)
-    /       | this user

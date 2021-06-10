@@ -1,0 +1,22 @@
+h1 #{@user.full_name}'s page
+
+.card.card-header.results-block
+  table.col-md-12 
+    tr
+      td
+        strong Name: 
+        = @user.full_name
+      td
+        strong Email:
+        = @user.email
+      td
+        - if current_user.not_friends_with?(@user.id)
+          strong Actions:
+          = link_to "Follow friend?", friendships_path(friend: @user), class: 'btn btn-sm btn-success', method: :post
+        - else 
+          span.badge.bg-secondary You are friends
+
+= render 'stocks/list'
+
+- if @tracked_stocks.empty?
+  p This user is not tracking any stocks
